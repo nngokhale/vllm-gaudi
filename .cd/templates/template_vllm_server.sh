@@ -17,5 +17,6 @@ vllm serve $MODEL \
         --max-num-seqs $MAX_NUM_SEQS \
         --generation-config vllm \
         --max_num_batched_tokens $MAX_NUM_BATCHED_TOKENS \
+        --no-enable-prefix-caching \
         --disable-log-requests ${EXTRA_ARGS} \
 2>&1 | tee -a  logs/vllm_server.log
