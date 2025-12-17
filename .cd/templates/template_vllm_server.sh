@@ -1,6 +1,15 @@
 #!/bin/bash
 
 #@VARS
+if [ $PT_HPU_LAZY_MODE -eq 0 ]; then
+    printf "\nEager bridge exports\n"
+    export PT_ENABLE_INT64_SUPPORT=0
+    export VLLM_T_COMPILE_DYNAMIC_SHAPES=False
+    export FUSER_ENABLE_LOW_UTILIZATION=true
+    export ENABLE_FUSION_BEFORE_NORM=true
+else
+    printf "\nLazy Mode\n"
+fi
 
 if [ "$VLLM_CONTIGUOUS_PA" == "True" ]; then # Checks if using contigous pa
     EXTRA_ARGS+=" --no-enable-prefix-caching"
