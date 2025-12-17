@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Parameterize base image components
-ARG DOCKER_URL=vault.habana.ai/gaudi-docker
-ARG VERSION=1.22.2
+ARG DOCKER_URL=artifactory-kfs.habana-labs.com/docker-local
+ARG VERSION=1.23.0
 ARG BASE_NAME=ubuntu24.04
-ARG PT_VERSION=2.7.1
-ARG REVISION=latest
+ARG PT_VERSION=2.9.0
+ARG REVISION=1.23.0-564
 ARG REPO_TYPE=habanalabs
 ARG TORCH_TYPE_SUFFIX
 

@@ -54,7 +54,10 @@ def calc_USABLE_MEM(ctx):
 
 
 def calc_GPU_MEMORY_UTIL_TEMP(ctx):
-    return (1 - ctx['GPU_FREE_MEM_TARGET'] / ctx['USABLE_MEM'])
+    if ctx['PT_HPU_LAZY_MODE']:
+        return (1 - ctx['GPU_FREE_MEM_TARGET'] / ctx['USABLE_MEM'])
+    else:
+        return (1 - ctx['GPU_FREE_MEM_TARGET_TC'] / ctx['USABLE_MEM'])
 
 
 def calc_GPU_MEM_UTILIZATION(ctx):
