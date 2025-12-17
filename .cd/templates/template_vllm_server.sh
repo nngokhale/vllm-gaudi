@@ -1,8 +1,13 @@
 #!/bin/bash
 
 #@VARS
+if [ $PT_HPU_LAZY_MODE -eq 0 ] && [ $TENSOR_PARALLEL_SIZE -eq 1 ]; then
+    printf "\nEager bridge TP 1 exports\n"
+    export PT_ENABLE_INT64_SUPPORT=0
+    export PT_HPU_ENABLE_EAGER_CACHE=true
+fi
 
-if [ "$VLLM_CONTIGUOUS_PA" == "True" ]; then # Checks if using contigous pa
+if [ "$VLLM_CONTIGUOUS_PA" = "True" ]; then # Checks if using contigous pa
     EXTRA_ARGS+=" --no-enable-prefix-caching"
 fi
 
